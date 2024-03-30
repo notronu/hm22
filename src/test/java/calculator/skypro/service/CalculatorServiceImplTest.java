@@ -18,14 +18,14 @@ class CalculatorServiceImplTest {
 
     @ParameterizedTest
     @MethodSource("provideParams")
-    void shouldReturnCorrectSum(int num1, int num2) {
-        assertEquals(num1 + num2, service.sum(num1, num2));
+    void shouldReturnCorrectPlus(int num1, int num2) {
+        assertEquals(num1 + num2, service.plus(num1, num2));
     }
 
     @ParameterizedTest
     @MethodSource("provideParams")
-    void shouldReturnCorrectSubstract(int num1, int num2) {
-        assertEquals(num1 - num2, service.substract(num1, num2));
+    void shouldReturnCorrectMinus(int num1, int num2) {
+        assertEquals(num1 - num2, service.minus(num1, num2));
     }
 
     @ParameterizedTest
