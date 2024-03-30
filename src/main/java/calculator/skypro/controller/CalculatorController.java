@@ -21,26 +21,28 @@ public class CalculatorController {
         return "Добро пожаловать в калькулятор";
     }
 
-    @GetMapping(path = "/plus")
-    public String plus(@RequestParam int num1, @RequestParam int num2) {
+    @GetMapping(path = "/sum")
+    public String sum(@RequestParam int num1, @RequestParam int num2) {
         int result = service.plus(num1, num2);
-        return num1 + " + " + num2  + " = " + result;
+        return num1 + " + " + num2 + " = " + result;
     }
 
-    @GetMapping(path = "/minus")
-    public String minus(@RequestParam int num1, @RequestParam int num2) {
+    @GetMapping(path = "/substract")
+    public String substract(@RequestParam int num1, @RequestParam int num2) {
         int result = service.minus(num1, num2);
-        return num1 + " - " + num2  + " = " + result;
+        return num1 + " - " + num2 + " = " + result;
     }
+
     @GetMapping(path = "/multiply")
     public String multiply(@RequestParam int num1, @RequestParam int num2) {
         int result = service.multiply(num1, num2);
-        return num1 + " * " + num2  + " = " + result;
+        return num1 + " * " + num2 + " = " + result;
     }
+
     @GetMapping(path = "/divide")
     public String divide(@RequestParam int num1, @RequestParam int num2) {
 
         float result = service.divide(num1, num2);
-        return num1 + " / " + num2  + " = " + result;
+        return num1 + " / " + num2 + " = " + result;
     }
 }

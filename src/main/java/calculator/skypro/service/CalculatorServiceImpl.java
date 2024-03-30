@@ -11,17 +11,15 @@ public class CalculatorServiceImpl implements CalculatorService {
         return null;
     }
 
-
     @Override
-    public int sum(int num1, int num2) {
-        return num1 +  num2;
+    public int plus(int num1, int num2) {
+        return 0;
     }
 
     @Override
-    public int substract(int num1, int num2) {
-        return num1 - num2;
+    public int minus(int num1, int num2) {
+        return 0;
     }
-
     @Override
     public int multiply(int num1, int num2) {
         return num1 * num2;
@@ -34,8 +32,6 @@ public class CalculatorServiceImpl implements CalculatorService {
         }
         return num1 / num2;
     }
-
-
 
 
 
