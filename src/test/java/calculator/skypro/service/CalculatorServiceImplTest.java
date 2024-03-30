@@ -2,6 +2,11 @@ package calculator.skypro.service;
 
 import calculator.skypro.exception.ZeroDivideException;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -11,34 +16,40 @@ class CalculatorServiceImplTest {
 
     private final CalculatorServiceImpl service = new CalculatorServiceImpl();
 
-    @Test
-    void shouldReturnCorrectSum() {
-        assertEquals(ONE + TWO, service.sum(ONE, TWO));
+    @ParameterizedTest
+    @MethodSource("provideParams")
+    void shouldReturnCorrectSum(int num1, int num2) {
+        assertEquals(num1 + num2, service.sum(num1, num2));
     }
 
-    @Test
-    void shouldReturnCorrectSum1() {
-        assertEquals(TWO + TWO, service.sum(TWO, TWO));
+    @ParameterizedTest
+    @MethodSource("provideParams")
+    void shouldReturnCorrectSubstract(int num1, int num2) {
+        assertEquals(num1 - num2, service.substract(num1, num2));
     }
 
-    @Test
-    void shouldReturnCorrectSubstract() {
-        assertEquals(TWO - ONE, service.substract(TWO, ONE));
+    @ParameterizedTest
+    @MethodSource("provideParams")
+    void shouldReturnCorrectMultiply(int num1, int num2) {
+        assertEquals(num1 * num2, service.multiply(num1, num2));
     }
 
-    @Test
-    void shouldReturnCorrectMultiply() {
-        assertEquals(ONE * THREE, service.multiply(ONE, THREE));
+    @ParameterizedTest
+    @MethodSource("provideParams")
+    void shouldReturnCorrectDivide(int num1, int num2) {
+        assertEquals(num1 / num2, service.divide(num1, num2));
     }
 
-    @Test
-    void shouldReturnCorrectDivide() {
-        assertEquals(TWO / ONE, service.divide(TWO, ONE));
-    }
 
-    @Test
-    void shouldThrowZeroDivideException() {
-        assertThrows(ZeroDivideException.class, () -> service.divide(THREE, ZERO));
+
+    private static Stream<Arguments> provideParams() {
+        return Stream.of(
+                Arguments.of(ZERO, ONE),
+                Arguments.of(ONE, ONE),
+                Arguments.of(THREE, ONE),
+                Arguments.of(TWO, TWO),
+                Arguments.of(THREE, THREE),
+                Arguments.of(THREE, ONE));
     }
 
 
